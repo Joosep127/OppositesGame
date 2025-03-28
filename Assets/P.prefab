@@ -171,7 +171,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.27}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -181,7 +181,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.97, y: 1.01}
+  m_Size: {x: 0.97, y: 0.5}
   m_EdgeRadius: 0
 --- !u!50 &7141896322989683639
 Rigidbody2D:
@@ -197,8 +197,8 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0
-  m_AngularDamping: 0
-  m_GravityScale: 1
+  m_AngularDamping: 0.05
+  m_GravityScale: 3
   m_Material: {fileID: 6200000, guid: 5f33a0f757ba97a4582c7b0ea7ce2f34, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -222,7 +222,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65ce637471dc3284ea7b20d866917034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  jumpForce: 10
+  acceleration: 2
+  maxSpeed: 10
+  maxFallSpeed: 10
+  deceleration: 2
+  accelerationAir: 1
+  decelerationAir: 1
+  jumpHangTimeThreshold: 5
+  jumpHangAccelerationMult: 3
+  jumpHangMaxSpeedMult: 1.5
+  jumpForce: 8
   coyoteTimeCounter: 0
   isGrounded: 0
+  speedDif: 0
+  movement: 0
