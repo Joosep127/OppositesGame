@@ -8,13 +8,16 @@ public class PlayerControls
     public KeyCode right;
     public KeyCode jump;
 
-    public PlayerControls(KeyCode up, KeyCode down, KeyCode left, KeyCode right, KeyCode jump)
+    public KeyCode toggle;
+
+    public PlayerControls(KeyCode up, KeyCode down, KeyCode left, KeyCode right, KeyCode jump, KeyCode toggle)
     {
         this.up = up;
         this.down = down;
         this.left = left;
         this.right = right;
         this.jump = jump;
+        this.toggle = toggle;
     }
 }
 
@@ -47,17 +50,25 @@ public class PlayerMovement : MonoBehaviour
     public float speedDif;
     public float movement;
 
+    public bool chargeState = false;
+    public bool playerType;
+    public bool hasHeadphones;
+
+    private string platformState;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
 
         if (gameObject.tag == "P1")
         {
-            controls = new PlayerControls(KeyCode.W, KeyCode.S, KeyCode.A, KeyCode.D, KeyCode.Space);
+            playerType = true;
+            controls = new PlayerControls(KeyCode.W, KeyCode.S, KeyCode.A, KeyCode.D, KeyCode.Space, KeyCode.E);
         }
         else if (gameObject.tag == "P2")
         {
-            controls = new PlayerControls(KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.RightControl);
+            playerType = false;
+            controls = new PlayerControls(KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.RightControl, KeyCode.L);
         }
         else
         {
@@ -80,6 +91,23 @@ public class PlayerMovement : MonoBehaviour
             coyoteTimeCounter -= Time.deltaTime;
         }
 
+        rb.AddForce(CalculateMovement() * Vector2.right, 0); // Run Left and Right
+
+        if (Input.GetKeyDown(controls.jump) && coyoteTimeCounter > 0)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            coyoteTimeCounter = 0;
+        }
+
+        if (Input.GetKeyDown(controls.toggle))
+        {
+            chargeState = !chargeState;
+        }
+
+    }
+
+    private float CalculateMovement()
+    {
         int moveInput;
         if (Input.GetKey(controls.left))
         {
@@ -128,20 +156,8 @@ public class PlayerMovement : MonoBehaviour
         float speedDif = targetSpeed - rb.linearVelocity.x;
         //Calculate force along x-axis to apply to thr player
 
-        float movement = speedDif * accelRate; //accelRate
-
-        //Convert this to a vector and apply to rigidbody
-        rb.AddForce(movement * Vector2.right, 0);
-
-
-        if (Input.GetKeyDown(controls.jump) && coyoteTimeCounter > 0)
-        {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-            coyoteTimeCounter = 0;
-        }
+        return (speedDif * accelRate);
     }
-
-
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Ground"))
@@ -156,6 +172,22 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Ground"))
         {
             isGrounded = false;
+        }
+    }
+
+    public void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 6 && chargeState)
+        {
+
+            platformState = collision.gameObject.tag;
+
+
+            Vector2 direction = collision.gameObject.transform.position - rb.transform.position;
+            int force = ((platformState == "Minus" ? true : false) == chargeState) ? -1 : 1;
+            rb.AddForce(direction.normalized * force);
+
+
         }
     }
 
