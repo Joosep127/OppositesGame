@@ -29,7 +29,9 @@ public class PlayerMovement : MonoBehaviour
     public float coyoteTimeCounter = 0f;
     public bool isGrounded = false;
     private PlayerControls controls;
+    private jumpColliderScript childjumpColliderScript;
     public Transform childTransform;
+    private bool isChildGrounded;
 
     void Start()
     {
@@ -47,13 +49,23 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.LogError("GameObject is connected to an object that is not a player");
         }
+
+        if (childTransform != null)
+        {
+            childjumpColliderScript = childTransform.GetComponent<jumpColliderScript>();
+            Debug.Log(childjumpColliderScript);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        isGrounded = childObject.GameObject.jumpColliderScript.isGrounded;
-        if (isGrounded)
+        if (childjumpColliderScript != null)
+        {
+            isChildGrounded = childjumpColliderScript.isGrounded;
+            Debug.Log("Child is grounded: " + isChildGrounded);
+        }
+        if (true)// if (isGrounded)
         {
             coyoteTimeCounter = coyoteTime; // Reset timer when on the ground
         }

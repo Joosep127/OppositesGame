@@ -180,7 +180,7 @@ MonoBehaviour:
   jumpForce: 10
   coyoteTimeCounter: 0
   isGrounded: 0
-  childObject: {fileID: 7913625275131992815}
+  childTransform: {fileID: 2267996890495590124}
 --- !u!1 &7913625275131992815
 GameObject:
   m_ObjectHideFlags: 0
