@@ -160,10 +160,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = true;
-        }
+        
     }
 
 
@@ -186,7 +183,6 @@ public class PlayerMovement : MonoBehaviour
             Vector2 direction = collision.gameObject.transform.position - rb.transform.position;
             int force = ((platformState == "Minus" ? true : false) == chargeState) ? -1 : 1;
             rb.AddForce(direction.normalized * force);
-
 
         }
     }
