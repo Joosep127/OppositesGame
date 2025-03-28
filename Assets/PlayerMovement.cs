@@ -29,7 +29,6 @@ public class PlayerMovement : MonoBehaviour
     public float coyoteTimeCounter = 0f;
     public bool isGrounded = false;
     private PlayerControls controls;
-    public BoxCollider jumpCollider;
 
     void Start()
     {
