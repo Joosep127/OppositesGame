@@ -61,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
             coyoteTimeCounter -= Time.deltaTime; // Decrease timer when in the air
         }
 
+
         float moveX = 0f;
         if (Input.GetKey(controls.left))
             moveX = -1f;
