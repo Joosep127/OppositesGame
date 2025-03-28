@@ -128,7 +128,7 @@ public class PlayerMovement : MonoBehaviour
         float speedDif = targetSpeed - rb.linearVelocity.x;
         //Calculate force along x-axis to apply to thr player
 
-        float movement = speedDif * accelRate; //
+        float movement = speedDif * accelRate; //accelRate
 
         //Convert this to a vector and apply to rigidbody
         rb.AddForce(movement * Vector2.right, 0);
