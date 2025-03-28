@@ -459,12 +459,15 @@ PrefabInstance:
     m_RemovedGameObjects: []
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2358396469076144060, guid: 98c5e58be91a95e468f3193501825c7d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1162890858}
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
     m_AddedGameObjects:
@@ -611,6 +614,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1726039732}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 --- !u!1 &590978653 stripped
@@ -836,6 +840,8 @@ SpriteRenderer:
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -920,6 +926,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 --- !u!1 &917841469
@@ -1662,12 +1669,17 @@ SpriteRenderer:
 =======
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 --- !u!4 &1726039732 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6510450247601658476, guid: 98c5e58be91a95e468f3193501825c7d, type: 3}
   m_PrefabInstance: {fileID: 435413517}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -1752,6 +1764,7 @@ PrefabInstance:
     m_AddedGameObjects: []
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2358396469076144060, guid: 98c5e58be91a95e468f3193501825c7d, type: 3}
       insertIndex: 3
@@ -1759,6 +1772,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2358396469076144060, guid: 98c5e58be91a95e468f3193501825c7d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 590978661}
+=======
+    m_AddedComponents: []
+>>>>>>> Stashed changes
 =======
     m_AddedComponents: []
 >>>>>>> Stashed changes
@@ -1873,8 +1889,12 @@ SceneRoots:
   - {fileID: 42732723}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   - {fileID: 1523256371}
   - {fileID: 1444753739}
+=======
+  - {fileID: 152110156}
+>>>>>>> Stashed changes
 =======
   - {fileID: 152110156}
 >>>>>>> Stashed changes

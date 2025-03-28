@@ -108,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
             accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acceleration * accelerationAir : deceleration * decelerationAir;
 
         //Increase are acceleration and maxSpeed when at the apex of their jump, makes the jump feel a bit more bouncy, responsive and natural
-        
+
 
         //We won't slow the player down if they are moving in their desired direction but at a greater speed than their maxSpeed
         if (Mathf.Abs(rb.linearVelocity.x) > Mathf.Abs(targetSpeed) && Mathf.Sign(rb.linearVelocity.x) == Mathf.Sign(targetSpeed) && Mathf.Abs(targetSpeed) > 0.01f && isGrounded)
