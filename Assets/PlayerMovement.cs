@@ -27,9 +27,9 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 10f;
     private float coyoteTime = 0.15f;
     public float coyoteTimeCounter = 0f;
-    private PlayerControls controls;
-
     public bool isGrounded = false;
+    private PlayerControls controls;
+    public Transform childTransform;
 
     void Start()
     {
@@ -52,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        isGrounded = childObject.GameObject.jumpColliderScript.isGrounded;
         if (isGrounded)
         {
             coyoteTimeCounter = coyoteTime; // Reset timer when on the ground
@@ -77,21 +78,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = true;
-        }
-    }
 
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = false;
-        }
-    }
 
 
 
