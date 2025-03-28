@@ -17,6 +17,7 @@ public class PlayerControls
         this.jump = jump;
     }
 }
+
 public class PlayerMovement : MonoBehaviour
 {
 
@@ -24,7 +25,11 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     public float moveSpeed = 5f;
     public float jumpForce = 10f;
+    private float coyoteTime = 0.15f;
+    public float coyoteTimeCounter = 0f;
     private PlayerControls controls;
+
+    public bool isGrounded = false;
 
     void Start()
     {
@@ -46,21 +51,47 @@ public class PlayerMovement : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-     {
-        // Get input
+    {
+        if (isGrounded)
+        {
+            coyoteTimeCounter = coyoteTime; // Reset timer when on the ground
+        }
+        else
+        {
+            coyoteTimeCounter -= Time.deltaTime; // Decrease timer when in the air
+        }
+
         float moveX = 0f;
         if (Input.GetKey(controls.left))
             moveX = -1f;
         if (Input.GetKey(controls.right))
             moveX = 1f;
 
-        // Apply movement
         rb.linearVelocity = new Vector2(moveX * moveSpeed, rb.linearVelocity.y);
 
-        // Jump
-        if (Input.GetKeyDown(controls.jump))
+        if (Input.GetKeyDown(controls.jump) && coyoteTimeCounter > 0)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            coyoteTimeCounter = 0;
         }
     }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = true;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = false;
+        }
+    }
+
+
+
 }
