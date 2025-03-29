@@ -918,6 +918,10 @@ PrefabInstance:
       propertyPath: tilemap
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1881864897434228787, guid: 98c5e58be91a95e468f3193501825c7d, type: 3}
+      propertyPath: jumpForce
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 2358396469076144060, guid: 98c5e58be91a95e468f3193501825c7d, type: 3}
       propertyPath: m_Name
       value: P (1)
