@@ -109,10 +109,6 @@ public class PlayerMovement : MonoBehaviour
             //gameObject.GetComponent<Renderer>().material.saturation *= -1;
 
         }
-
-
-
-
     }
 
     private float CalculateMovement()
@@ -168,9 +164,9 @@ public class PlayerMovement : MonoBehaviour
         return (speedDif * accelRate);
     }
 
-    public void OnTriggerExit2D(Collider2D other)
+    public void OnTriggerExit2D(Collider2D collision)
     {
-        if (other.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground") || playerType && collision.gameObject.CompareTag("P1") || playerType && collision.gameObject.CompareTag("P2"))
         {
             isGrounded = false;
         }
@@ -178,7 +174,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground") || playerType && collision.gameObject.CompareTag("P1") || playerType && collision.gameObject.CompareTag("P2"))
         {
             isGrounded = true;
         }
