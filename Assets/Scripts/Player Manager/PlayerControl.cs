@@ -56,7 +56,7 @@ public class PlayerManager : MonoBehaviour
                 {
                     float force = (chargedTile.Polarity == chargeState) ? -chargeForce : chargeForce;
                     Vector2 direction = (chargedTilemap.GetCellCenterWorld(tilePosition) - transform.position).normalized;
-                    
+
                     rb.AddForce(direction * force, ForceMode2D.Force);
                 }
             }

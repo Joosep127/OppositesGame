@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Negative
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 7482667652216324306, guid: 364e360fbd8236246bd233fa7db7617a, type: 3}
-  m_Color: {r: 0.24964444, g: 0.49056602, b: 0.11338555, a: 1}
+  m_Color: {r: 0.11372548, g: 0.20653582, b: 0.49019608, a: 1}
   m_Transform:
     e00: 1
     e01: 0
@@ -34,4 +34,4 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 1
   m_ColliderType: 1
-  Polarity: -3
+  Polarity: -1

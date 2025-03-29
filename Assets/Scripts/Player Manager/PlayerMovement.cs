@@ -108,10 +108,7 @@ public class PlayerMovement : MonoBehaviour
             chargeState = !chargeState;
         }
 
-        if (chargeState)
-        {
-            ApplyPolarityForces();
-        }
+
 
     }
 
@@ -182,34 +179,24 @@ public class PlayerMovement : MonoBehaviour
         {
             isGrounded = true;
         }
+        if (chargeState && collision.gameObject.CompareTag("Magnet"))
+        {
+            ApplyPolarityForces(collision);
+        }
 
 
     }
-    private void ApplyPolarityForces()
+    private void ApplyPolarityForces(Collider2D collision)
     {
-        BoundsInt bounds = tilemap.cellBounds; // Get the bounding box of the tilemap
 
-        for (int x = bounds.xMin; x < bounds.xMax; x++)
-        {
-            for (int y = bounds.yMin; y < bounds.yMax; y++)
-            {
-                Vector3Int tilePos = new Vector3Int(x, y, 0);
-                //Temp tile = tilemap.GetTile<Temp>(tilePos); // Get tile with polarity
-                TileBase tile = tilemap.GetTile<Tile>(tilePos);
-                Debug.Log(tile);
-                if (tile != null)
-                {
-                    Debug.Log("Secret 🤫");
-                    Vector3 worldPos = tilemap.GetCellCenterWorld(tilePos);
-                    Temp temp = tilemap.GetTile<Temp>(tilePos); // Tile position in world space
+        Vector3 worldPos = collision.gameObject.transform.position;
+        int force = collision.gameObject.GetComponent<MagnetScript>().Polarity * (playerType ? 1 : -1);
+        Vector3 direction = (worldPos - transform.position).normalized;
 
-                    float force = temp.Polarity;
-                    Vector2 direction = (worldPos - transform.position).normalized;
+        Debug.Log("DEBUGGING; " + direction);
 
-                    rb.AddForce(direction * (force * magnetismPower / (Vector2.Distance(worldPos, transform.position) + 0.5f)));
-                }
-            }
-        }
+        rb.AddForce(direction * (force * magnetismPower / (Vector3.Distance(worldPos, transform.position) + 0.5f)));
+
     }
 
 

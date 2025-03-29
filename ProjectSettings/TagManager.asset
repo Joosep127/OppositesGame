@@ -7,9 +7,7 @@ TagManager:
   - P1
   - P2
   - Ground
-  - ChargedPlatform
-  - Minus
-  - Plus
+  - Magnet
   layers:
   - Default
   - TransparentFX
