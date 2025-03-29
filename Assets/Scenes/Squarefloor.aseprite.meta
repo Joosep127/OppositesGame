@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 58ddda81393803646a940b66bb02afc4
+guid: 5352ee4209f7ef8459ad5c8684c764b4
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Background
+  - name: Squarefloor
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -133,9 +133,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 384
-      height: 248
-    spriteID: 8c3b1dfe14b7f984fb223c4a3c2f665a
+      width: 16
+      height: 16
+    spriteID: 02ef98797b212d441a9001b3b637ac16
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -147,21 +147,21 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 332801758
-    name: Background
+    guid: 1101404681
+    name: Squarefloor
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Background
+    - name: Squarefloor
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
-        width: 384
-        height: 248
-      spriteId: 8c3b1dfe14b7f984fb223c4a3c2f665a
+        width: 16
+        height: 16
+      spriteId: 02ef98797b212d441a9001b3b637ac16
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -180,5 +180,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 384, y: 256}
-  previousTextureSize: {x: 512, y: 256}
+  canvasSize: {x: 16, y: 16}
+  previousTextureSize: {x: 32, y: 32}

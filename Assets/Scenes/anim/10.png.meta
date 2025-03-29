@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7d96889af23ca494db325af2df8f3a18
+guid: e3cd87f8f638e8c4394239c49ebd7b04
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -180643812468143988
-    second: Gradient-image-1_0
+      213: -5099292496197868168
+    second: 10_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Gradient-image-1_0
+      name: 10_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 800
-        height: 365
+        width: 149
+        height: 294
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c88c6fed8693e7df0800000000000000
-      internalID: -180643812468143988
+      spriteID: 875af4eed7cab39b0800000000000000
+      internalID: -5099292496197868168
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Gradient-image-1_0: -180643812468143988
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
