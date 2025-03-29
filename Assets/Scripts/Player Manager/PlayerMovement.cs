@@ -192,7 +192,7 @@ public class PlayerMovement : MonoBehaviour
             for (int y = minTile.y; y <= maxTile.y; y++)
             {
                 Debug.Log(minTile);
-            Debug.Log(maxTile);
+                Debug.Log(maxTile);
                 Vector3Int tilePos = new Vector3Int(x, y, 0);
                 //Temp tile = tilemap.GetTile<Temp>(tilePos); // Get tile with polarity
                 TileBase tile = tilemap.GetTile<Tile>(tilePos);
