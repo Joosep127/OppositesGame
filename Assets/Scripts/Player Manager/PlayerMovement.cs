@@ -179,8 +179,10 @@ public class PlayerMovement : MonoBehaviour
 
             platformState = collision.gameObject.tag;
 
-
+            // Todo: Find Tile transform.position 
             Vector2 direction = collision.gameObject.transform.position - rb.transform.position;
+            
+            // Todo: Find Tile Polarity
             int force = ((platformState == "Minus" ? true : false) == chargeState) ? -1 : 1;
             rb.AddForce(direction.normalized * force * 100);
 
