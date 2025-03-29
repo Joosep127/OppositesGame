@@ -8,6 +8,8 @@ TagManager:
   - P2
   - Ground
   - ChargedPlatform
+  - Minus
+  - Plus
   layers:
   - Default
   - TransparentFX

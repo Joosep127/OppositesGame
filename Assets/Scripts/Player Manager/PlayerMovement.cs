@@ -158,14 +158,6 @@ public class PlayerMovement : MonoBehaviour
 
         return (speedDif * accelRate);
     }
-    public void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = true;
-        }
-    }
-
 
     public void OnTriggerExit2D(Collider2D other)
     {
@@ -177,16 +169,24 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnTriggerStay2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = true;
+        }
+
         if (collision.gameObject.layer == 6 && chargeState)
         {
 
             platformState = collision.gameObject.tag;
 
-
+            // Todo: Find Tile transform.position 
             Vector2 direction = collision.gameObject.transform.position - rb.transform.position;
+            
+            // Todo: Find Tile Polarity
             int force = ((platformState == "Minus" ? true : false) == chargeState) ? -1 : 1;
-            rb.AddForce(direction.normalized * force);
-
+            
+            
+            rb.AddForce(direction.normalized * force * 100);
 
         }
     }
