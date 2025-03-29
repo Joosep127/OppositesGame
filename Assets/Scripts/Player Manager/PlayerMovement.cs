@@ -60,6 +60,9 @@ public class PlayerMovement : MonoBehaviour
 
     private string platformState;
 
+    private LineRenderer lineRenderer;
+    public Gradient colorGradient;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -67,11 +70,13 @@ public class PlayerMovement : MonoBehaviour
         if (gameObject.tag == "P1")
         {
             playerType = true;
+            gameObject.GetComponent<Renderer>().material.color = Color.red;
             controls = new PlayerControls(KeyCode.W, KeyCode.S, KeyCode.A, KeyCode.D, KeyCode.Space, KeyCode.E);
         }
         else if (gameObject.tag == "P2")
         {
             playerType = false;
+            gameObject.GetComponent<Renderer>().material.color = Color.blue;
             controls = new PlayerControls(KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.RightControl, KeyCode.L);
         }
         else
@@ -80,6 +85,10 @@ public class PlayerMovement : MonoBehaviour
         }
 
         physicMaterial = rb.sharedMaterial;
+        lineRenderer = GetComponent<LineRenderer>();
+
+        lineRenderer.positionCount = 2;
+        lineRenderer.enabled = false;
 
     }
 
@@ -106,8 +115,11 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(controls.toggle))
         {
             chargeState = !chargeState;
-            //gameObject.GetComponent<Renderer>().material.saturation *= -1;
+            if (chargeState)
+            {
 
+            }
+            //gameObject.GetComponent<Renderer>().material.saturation *= -1;
         }
     }
 
@@ -170,6 +182,7 @@ public class PlayerMovement : MonoBehaviour
         {
             isGrounded = false;
         }
+        lineRenderer.enabled = false;
     }
 
     public void OnTriggerStay2D(Collider2D collision)
@@ -181,7 +194,10 @@ public class PlayerMovement : MonoBehaviour
         if (chargeState && collision.gameObject.CompareTag("Magnet"))
         {
             ApplyPolarityForces(collision);
+            lineRenderer.enabled = true;
+            DrawArrow(collision);
         }
+
 
 
     }
@@ -194,8 +210,27 @@ public class PlayerMovement : MonoBehaviour
 
         Debug.Log("DEBUGGING; " + direction);
 
-        rb.AddForce(direction * (force * magnetismPower / (Vector3.Distance(worldPos, transform.position) + 0.5f)));
+        rb.AddForce(direction * (force * magnetismPower / (Vector3.Distance(worldPos, transform.position) + 0.4f)));
 
+    }
+
+    private void DrawArrow(Collider2D collision)
+    {
+        Vector3 worldPos = collision.transform.position;
+        float distance = Vector3.Distance(transform.position, worldPos);
+
+        // Normalize distance to range [0,1] for color interpolation
+        float t = Mathf.Clamp01(1 - (distance / 10f)); // 10f is the max distance
+
+        // Set line positions
+        lineRenderer.enabled = true;
+        lineRenderer.SetPosition(0, transform.position);
+        lineRenderer.SetPosition(1, worldPos);
+
+        // Adjust arrow color based on distance
+        Color arrowColor = (playerType ? Color.red : Color.blue);
+        arrowColor.a = 1 - t;
+        lineRenderer.startColor = arrowColor;
     }
 
 
