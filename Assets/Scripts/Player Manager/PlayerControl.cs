@@ -1,20 +1,36 @@
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private Tilemap chargedTilemap; // Reference to the Tilemap containing charged tiles
+    [SerializeField] private Collider2D detectionRadius;
 
     public int chargeState = 0; // 0 = Uncharged, 1 = Positive, -1 = Negative
     public KeyCode chargeKey; // Assigned in Unity Inspector (E for P1, O for P2)
 
     private float chargeForce = 10f;
-    private float detectionRadius = 1f;
     private float bounceForce = 12f; // Adjust as needed
+    private float fallSpeedBoost = 5f; // Extra gravity force when falling after release
     private bool isStuck = false; // Track if player is stuck to a surface
 
     private Transform stuckSurface; // Store reference to the surface when sticking
+    private float radius;
+
+    private bool canJumpWhileStuck = true; // Allow jumping while stuck if true
+    
+    void Start()
+    {
+        if (detectionRadius == null)
+        {
+            detectionRadius = GetComponent<Collider2D>();
+        }
+
+        if (detectionRadius != null)
+        {
+            detectionRadius.isTrigger = true; // Ensure it's a trigger
+            UpdateDetectionRadius();
+        }
+    }
 
     void Update()
     {
@@ -24,6 +40,15 @@ public class PlayerManager : MonoBehaviour
     void FixedUpdate()
     {
         ApplyChargeForces();
+       
+        if (isStuck && stuckSurface != null)
+        {
+            float distance = Vector2.Distance(transform.position, stuckSurface.position);
+            if (distance > radius) 
+            {
+                ReleaseFromSurface();
+            }
+        }
     }
 
     void ToggleCharge()
@@ -43,21 +68,17 @@ public class PlayerManager : MonoBehaviour
     {
         if (chargeState == 0) return;
 
-        Vector3Int playerCell = chargedTilemap.WorldToCell(transform.position); // Get player's current tile position
-
-        for (int x = -2; x <= 2; x++) // Scan tiles in a small area around the player
+        Collider2D[] nearbyObjects = Physics2D.OverlapCircleAll(transform.position, radius);
+        foreach (Collider2D obj in nearbyObjects)
         {
-            for (int y = -2; y <= 2; y++)
+            if (obj.CompareTag("Ground"))
             {
-                Vector3Int tilePosition = new Vector3Int(playerCell.x + x, playerCell.y + y, 0);
-                TileBase tile = chargedTilemap.GetTile(tilePosition);
-
-                if (tile is Temp chargedTile) // Check if tile has charge
+                ChargedPlatform platform = obj.GetComponent<ChargedPlatform>();
+                if (platform != null && platform.chargeType != 0) // Ignore uncharged platforms
                 {
-                    float force = (chargedTile.Polarity == chargeState) ? -chargeForce : chargeForce;
-                    Vector2 direction = (chargedTilemap.GetCellCenterWorld(tilePosition) - transform.position).normalized;
-                    
-                    rb.AddForce(direction * force, ForceMode2D.Force);
+                    Vector2 direction = obj.transform.position - transform.position;
+                    float force = (platform.chargeType == chargeState) ? -chargeForce : chargeForce;
+                    rb.AddForce(direction.normalized * force, ForceMode2D.Force);
                 }
             }
         }
@@ -65,18 +86,20 @@ public class PlayerManager : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Vector3Int tilePosition = chargedTilemap.WorldToCell(transform.position);
-        TileBase tile = chargedTilemap.GetTile(tilePosition);
-
-        if (tile is Temp chargedTile)
+        if (collision.gameObject.CompareTag("Ground"))
         {
-            if (chargeState == chargedTile.Polarity) // Similar charges -> Bounce
+            ChargedPlatform platform = collision.gameObject.GetComponent<ChargedPlatform>();
+
+            if (platform != null && platform.chargeType != 0)
             {
-                Bounce();
-            }
-            else if (chargeState != 0 && chargeState != chargedTile.Polarity) // Opposite charges -> Stick
-            {
-                StickToSurface(collision.transform);
+                if (chargeState == platform.chargeType) // Similar charges -> Bounce
+                {
+                    Bounce();
+                }
+                else if (chargeState != 0 && chargeState != platform.chargeType) // Opposite charges -> Stick
+                {
+                    StickToSurface(collision.transform);
+                }
             }
         }
     }
@@ -87,7 +110,7 @@ public class PlayerManager : MonoBehaviour
         {
             ReleaseFromSurface();
         }
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x, bounceForce); // Use velocity for better control
+        rb.velocity = new Vector2(rb.velocity.x, bounceForce); // Use velocity for better control
     }
 
     void StickToSurface(Transform surface)
@@ -97,9 +120,9 @@ public class PlayerManager : MonoBehaviour
         isStuck = true;
         stuckSurface = surface;
 
-        rb.linearVelocity = Vector2.zero; // Stop the player's movement
+        //rb.linearVelocity = Vector2.zero; // Stop the player's movement
         rb.gravityScale = 0f;
-        //transform.parent = surface; // Attach player to platform
+        transform.parent = surface; // Attach player to platform
     }
 
     void ReleaseFromSurface()
@@ -108,6 +131,19 @@ public class PlayerManager : MonoBehaviour
 
         isStuck = false;
         rb.gravityScale = 1f; // Reset gravity to normal
-        //transform.parent = null; // Detach from platform
+        rb.velocity = new Vector2(rb.velocity.x, -fallSpeedBoost); // Fall quickly after release
+        transform.parent = null; // Detach from platform
+    }
+    
+    void UpdateDetectionRadius()
+    {
+        if (detectionRadius is CircleCollider2D circle)
+        {
+            radius = circle.radius * Mathf.Max(transform.localScale.x, transform.localScale.y);
+        }
+        else if (detectionRadius is BoxCollider2D box)
+        {
+            radius = Mathf.Max(box.size.x, box.size.y) * 0.5f * Mathf.Max(transform.localScale.x, transform.localScale.y);
+        }
     }
 }
