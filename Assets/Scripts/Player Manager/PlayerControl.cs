@@ -8,7 +8,7 @@ public class PlayerManager : MonoBehaviour
     public KeyCode chargeKey; // Assigned in Unity Inspector (E for P1, O for P2)
 
     private float chargeForce = 10f;
-    private float detectionRadius = 4f;
+    private float detectionRadius = 2f;
     private float bounceForce = 12f; // Adjust as needed
     private bool isStuck = false; // Track if player is stuck to a surface
 

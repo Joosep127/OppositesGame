@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class PlayerControls
 {
@@ -24,6 +25,7 @@ public class PlayerControls
 public class PlayerMovement : MonoBehaviour
 {
 
+    public Tilemap tilemap;
 
     private Rigidbody2D rb;
     public float acceleration = 1f;
@@ -176,18 +178,35 @@ public class PlayerMovement : MonoBehaviour
 
         if (collision.gameObject.layer == 6 && chargeState)
         {
+            ApplyPolarityForces();
+        }
+    }
+    private void ApplyPolarityForces()
+    {
+        Bounds bounds = GetComponent<Collider2D>().bounds; // Get player collider bounds
+        Vector3Int minTile = tilemap.WorldToCell(bounds.min);
+        Vector3Int maxTile = tilemap.WorldToCell(bounds.max);
 
-            platformState = collision.gameObject.tag;
+        Debug.Log(bounds);
+        Debug.Log("Stuff");
 
-            // Todo: Find Tile transform.position 
-            Vector2 direction = collision.gameObject.transform.position - rb.transform.position;
-            
-            // Todo: Find Tile Polarity
-            int force = ((platformState == "Minus" ? true : false) == chargeState) ? -1 : 1;
-            
-            
-            rb.AddForce(direction.normalized * force * 100);
+        for (int x = Mathf.FloorToInt(gameObject.transform.position.x - radius); x <= Mathf.CeilToInt(gameObject.transform.position.x + radius); x++)
+        {
+            for (int y = Mathf.FloorToInt(gameObject.transform.position.y - radius); y <= Mathf.CeilToInt(gameObject.transform.position.y + radius); y++)
+            {
 
+                Temp tile = tilemap.GetTile<Temp>(tilePos); // Check if tile exists
+
+                if (tile != null)
+                {
+                    Vector3 worldPos = tilemap.GetCellCenterWorld(tilePos); // Tile position in world space
+
+                    int force = ((platformState == "Minus") == chargeState) ? -1 : 1;
+                    Vector2 direction = (worldPos - transform.position).normalized;
+
+                    rb.AddForce(force * direction * 100);
+                }
+            }
         }
     }
 
