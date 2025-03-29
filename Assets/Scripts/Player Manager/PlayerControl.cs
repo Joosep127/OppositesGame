@@ -6,7 +6,7 @@ public class PlayerManager : MonoBehaviour
 
     public int chargeState = 0; // 0 = Uncharged, 1 = Positive, -1 = Negative
     public KeyCode chargeKey; // Assigned in Unity Inspector (E for P1, O for P2)
-    
+
     private float chargeForce = 10f;
     private float detectionRadius = 4f;
     private float bounceForce = 12f; // Adjust as needed
@@ -92,7 +92,7 @@ public class PlayerManager : MonoBehaviour
 
         isStuck = true;
         stuckSurface = surface;
-        
+
         //rb.linearVelocity = Vector2.zero; // Stop the player's movement
         rb.gravityScale = 0f;
         transform.parent = surface; // Attach player to platform
