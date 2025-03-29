@@ -106,6 +106,8 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(controls.toggle))
         {
             chargeState = !chargeState;
+            //gameObject.GetComponent<Renderer>().material.saturation *= -1;
+
         }
 
 
