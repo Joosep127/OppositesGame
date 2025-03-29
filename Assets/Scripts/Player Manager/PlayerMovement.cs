@@ -187,18 +187,19 @@ public class PlayerMovement : MonoBehaviour
         Vector3Int minTile = tilemap.WorldToCell(bounds.min);
         Vector3Int maxTile = tilemap.WorldToCell(bounds.max);
 
-        Debug.Log(bounds);
-        Debug.Log("Stuff");
-
-        for (int x = Mathf.FloorToInt(gameObject.transform.position.x - radius); x <= Mathf.CeilToInt(gameObject.transform.position.x + radius); x++)
+        for (int x = minTile.x; x <= maxTile.x; x++)
         {
-            for (int y = Mathf.FloorToInt(gameObject.transform.position.y - radius); y <= Mathf.CeilToInt(gameObject.transform.position.y + radius); y++)
+            for (int y = minTile.y; y <= maxTile.y; y++)
             {
-
-                Temp tile = tilemap.GetTile<Temp>(tilePos); // Check if tile exists
-
+                Debug.Log(minTile);
+            Debug.Log(maxTile);
+                Vector3Int tilePos = new Vector3Int(x, y, 0);
+                //Temp tile = tilemap.GetTile<Temp>(tilePos); // Get tile with polarity
+                TileBase tile = tilemap.GetTile<Tile>(tilePos);
+                Debug.Log(tile);
                 if (tile != null)
                 {
+                    Debug.Log("Secret 🤫");
                     Vector3 worldPos = tilemap.GetCellCenterWorld(tilePos); // Tile position in world space
 
                     int force = ((platformState == "Minus") == chargeState) ? -1 : 1;
