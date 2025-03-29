@@ -1,16 +1,14 @@
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private Tilemap chargedTilemap; // Reference to the Tilemap containing charged tiles
 
     public int chargeState = 0; // 0 = Uncharged, 1 = Positive, -1 = Negative
     public KeyCode chargeKey; // Assigned in Unity Inspector (E for P1, O for P2)
 
     private float chargeForce = 10f;
-    private float detectionRadius = 1f;
+    private float detectionRadius = 2f;
     private float bounceForce = 12f; // Adjust as needed
     private bool isStuck = false; // Track if player is stuck to a surface
 
@@ -43,21 +41,17 @@ public class PlayerManager : MonoBehaviour
     {
         if (chargeState == 0) return;
 
-        Vector3Int playerCell = chargedTilemap.WorldToCell(transform.position); // Get player's current tile position
-
-        for (int x = -2; x <= 2; x++) // Scan tiles in a small area around the player
+        Collider2D[] nearbyObjects = Physics2D.OverlapCircleAll(transform.position, detectionRadius);
+        foreach (Collider2D obj in nearbyObjects)
         {
-            for (int y = -2; y <= 2; y++)
+            if (obj.CompareTag("ChargedPlatform"))
             {
-                Vector3Int tilePosition = new Vector3Int(playerCell.x + x, playerCell.y + y, 0);
-                TileBase tile = chargedTilemap.GetTile(tilePosition);
-
-                if (tile is Temp chargedTile) // Check if tile has charge
+                ChargedPlatform platform = obj.GetComponent<ChargedPlatform>();
+                if (platform != null)
                 {
-                    float force = (chargedTile.Polarity == chargeState) ? -chargeForce : chargeForce;
-                    Vector2 direction = (chargedTilemap.GetCellCenterWorld(tilePosition) - transform.position).normalized;
-                    
-                    rb.AddForce(direction * force, ForceMode2D.Force);
+                    Vector2 direction = obj.transform.position - transform.position;
+                    float force = (platform.chargeType == chargeState) ? -chargeForce : chargeForce;
+                    rb.AddForce(direction.normalized * force, ForceMode2D.Force);
                 }
             }
         }
@@ -65,18 +59,20 @@ public class PlayerManager : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Vector3Int tilePosition = chargedTilemap.WorldToCell(transform.position);
-        TileBase tile = chargedTilemap.GetTile(tilePosition);
-
-        if (tile is Temp chargedTile)
+        if (collision.gameObject.CompareTag("ChargedPlatform"))
         {
-            if (chargeState == chargedTile.Polarity) // Similar charges -> Bounce
+            ChargedPlatform platform = collision.gameObject.GetComponent<ChargedPlatform>();
+
+            if (platform != null)
             {
-                Bounce();
-            }
-            else if (chargeState != 0 && chargeState != chargedTile.Polarity) // Opposite charges -> Stick
-            {
-                StickToSurface(collision.transform);
+                if (chargeState == platform.chargeType) // Similar charges -> Bounce
+                {
+                    Bounce();
+                }
+                else if (chargeState != 0 && chargeState != platform.chargeType) // Opposite charges -> Stick
+                {
+                    StickToSurface(collision.transform);
+                }
             }
         }
     }
@@ -97,9 +93,9 @@ public class PlayerManager : MonoBehaviour
         isStuck = true;
         stuckSurface = surface;
 
-        rb.linearVelocity = Vector2.zero; // Stop the player's movement
+        //rb.linearVelocity = Vector2.zero; // Stop the player's movement
         rb.gravityScale = 0f;
-        //transform.parent = surface; // Attach player to platform
+        transform.parent = surface; // Attach player to platform
     }
 
     void ReleaseFromSurface()
@@ -108,6 +104,6 @@ public class PlayerManager : MonoBehaviour
 
         isStuck = false;
         rb.gravityScale = 1f; // Reset gravity to normal
-        //transform.parent = null; // Detach from platform
+        transform.parent = null; // Detach from platform
     }
 }
