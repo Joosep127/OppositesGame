@@ -35,7 +35,6 @@ public class DoorScript : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)    
     {
-        Debug.Log("Entered collision");
         if ((collision.gameObject.CompareTag("P1") || !P1)) {
             hasP1 = true;
         } else if ((collision.gameObject.CompareTag("P2") || !P2)) {
