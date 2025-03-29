@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/Menus/Main menu.unity
-    guid: e027977157668764bb015c3598bacc4d
-  - enabled: 0
     path: Assets/Scenes/J-Scene.unity
     guid: 97f351af793cb5f4c8f7f81ccf73a4ff
   - enabled: 0
@@ -17,6 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Joosep's.unity
     guid: bd852e9a256ce76478a5925c02201caa
+  - enabled: 1
+    path: Assets/Scenes/Menus/Main menu.unity
+    guid: e027977157668764bb015c3598bacc4d
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
