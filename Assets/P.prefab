@@ -236,7 +236,7 @@ MonoBehaviour:
   jumpHangTimeThreshold: 5
   jumpHangAccelerationMult: 1
   jumpHangMaxSpeedMult: 1.5
-  jumpForce: 8
+  jumpForce: 12
   coyoteTimeCounter: 0
   isGrounded: 0
   speedDif: 0
