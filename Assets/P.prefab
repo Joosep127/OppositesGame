@@ -226,6 +226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 0}
+  magnetismPower: 15
   acceleration: 2
   maxSpeed: 10
   maxFallSpeed: 10

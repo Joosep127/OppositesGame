@@ -27,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
 
     public Tilemap tilemap;
 
+    public int magnetismPower;
+
     private Rigidbody2D rb;
     public float acceleration = 1f;
     public float maxSpeed = 10f;
@@ -106,6 +108,11 @@ public class PlayerMovement : MonoBehaviour
             chargeState = !chargeState;
         }
 
+        if (chargeState)
+        {
+            ApplyPolarityForces();
+        }
+
     }
 
     private float CalculateMovement()
@@ -176,23 +183,16 @@ public class PlayerMovement : MonoBehaviour
             isGrounded = true;
         }
 
-        if (collision.gameObject.layer == 6 && chargeState)
-        {
-            ApplyPolarityForces();
-        }
+
     }
     private void ApplyPolarityForces()
     {
-        Bounds bounds = GetComponent<Collider2D>().bounds; // Get player collider bounds
-        Vector3Int minTile = tilemap.WorldToCell(bounds.min);
-        Vector3Int maxTile = tilemap.WorldToCell(bounds.max);
+        BoundsInt bounds = tilemap.cellBounds; // Get the bounding box of the tilemap
 
-        for (int x = minTile.x; x <= maxTile.x; x++)
+        for (int x = bounds.xMin; x < bounds.xMax; x++)
         {
-            for (int y = minTile.y; y <= maxTile.y; y++)
+            for (int y = bounds.yMin; y < bounds.yMax; y++)
             {
-                Debug.Log(minTile);
-                Debug.Log(maxTile);
                 Vector3Int tilePos = new Vector3Int(x, y, 0);
                 //Temp tile = tilemap.GetTile<Temp>(tilePos); // Get tile with polarity
                 TileBase tile = tilemap.GetTile<Tile>(tilePos);
@@ -200,12 +200,13 @@ public class PlayerMovement : MonoBehaviour
                 if (tile != null)
                 {
                     Debug.Log("Secret 🤫");
-                    Vector3 worldPos = tilemap.GetCellCenterWorld(tilePos); // Tile position in world space
+                    Vector3 worldPos = tilemap.GetCellCenterWorld(tilePos);
+                    Temp temp = tilemap.GetTile<Temp>(tilePos); // Tile position in world space
 
-                    int force = ((platformState == "Minus") == chargeState) ? -1 : 1;
+                    float force = temp.Polarity;
                     Vector2 direction = (worldPos - transform.position).normalized;
 
-                    rb.AddForce(force * direction * 100);
+                    rb.AddForce(direction * (force * magnetismPower / (Vector2.Distance(worldPos, transform.position) + 0.5f)));
                 }
             }
         }
