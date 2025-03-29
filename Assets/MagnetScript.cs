@@ -7,11 +7,11 @@ public class MagnetScript : MonoBehaviour
     public int Polarity;
     void Start()
     {
-        if (Polarity < 0)
+        if (Polarity > 0)
         {
             gameObject.GetComponent<Renderer>().material.color = Color.blue;
         }
-        else if (Polarity > 0)
+        else if (Polarity < 0)
         {
             gameObject.GetComponent<Renderer>().material.color = Color.red;
         }
