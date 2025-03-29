@@ -136,7 +136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &17386773
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -265,6 +265,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Magnetfinal
       objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: efb46038f218e4d4fa13c16da4a027e0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: efb46038f218e4d4fa13c16da4a027e0, type: 3}
       propertyPath: m_LocalScale.x
       value: 7.5
@@ -337,6 +341,10 @@ PrefabInstance:
     - target: {fileID: -2253911629886400664, guid: 287a03287a348314e81a684de28e7ee2, type: 3}
       propertyPath: m_Name
       value: MagentBlueR
+      objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: 287a03287a348314e81a684de28e7ee2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: 287a03287a348314e81a684de28e7ee2, type: 3}
       propertyPath: m_SortingOrder
@@ -469,6 +477,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MagnetRedR (2)
       objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: 97f5a92874c5dc946b7736b2b917b653, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: 97f5a92874c5dc946b7736b2b917b653, type: 3}
       propertyPath: m_SortingOrder
       value: 1
@@ -600,6 +612,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Magnetfinal2
       objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: e4c65af51d175704d8c127d69d97fe4a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: e4c65af51d175704d8c127d69d97fe4a, type: 3}
       propertyPath: m_LocalScale.x
       value: 4.5
@@ -706,9 +722,9 @@ BoxCollider2D:
   m_Offset: {x: 0.000000014901161, y: 0.08}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.49999997, y: -0.071428575}
-    oldSize: {x: 0.46, y: 0.14}
-    newSize: {x: 0.46, y: 0.14}
+    pivot: {x: 0.49999997, y: -0.06666667}
+    oldSize: {x: 0.46, y: 0.15}
+    newSize: {x: 0.46, y: 0.15}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -726,6 +742,10 @@ PrefabInstance:
     - target: {fileID: -2253911629886400664, guid: 2be0923bdf4c92c40838ec615ea1ab26, type: 3}
       propertyPath: m_Name
       value: MagnetBlueR1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: 2be0923bdf4c92c40838ec615ea1ab26, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: 2be0923bdf4c92c40838ec615ea1ab26, type: 3}
       propertyPath: m_SortingOrder
@@ -858,6 +878,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MagnetRedR1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: bf436aa762903a746976f2ac2e24fb14, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: bf436aa762903a746976f2ac2e24fb14, type: 3}
       propertyPath: m_SortingOrder
       value: 1
@@ -937,6 +961,10 @@ PrefabInstance:
     - target: {fileID: -2253911629886400664, guid: efb46038f218e4d4fa13c16da4a027e0, type: 3}
       propertyPath: m_Name
       value: Magnetfinal (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: efb46038f218e4d4fa13c16da4a027e0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: efb46038f218e4d4fa13c16da4a027e0, type: 3}
       propertyPath: m_SortingOrder
@@ -1074,7 +1102,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &242497639
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1253,6 +1281,10 @@ PrefabInstance:
     - target: {fileID: -2253911629886400664, guid: 752050c8e6c3a244dbc79ff828b85794, type: 3}
       propertyPath: m_Name
       value: Floorhalf (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: 752050c8e6c3a244dbc79ff828b85794, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: 752050c8e6c3a244dbc79ff828b85794, type: 3}
       propertyPath: m_SortingOrder
@@ -1436,6 +1468,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Background1
       objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: a54f0c927a709dc4e99319e6730dc194, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: a54f0c927a709dc4e99319e6730dc194, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.30208
@@ -1560,6 +1596,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floorhalf (9)
       objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: 752050c8e6c3a244dbc79ff828b85794, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: 752050c8e6c3a244dbc79ff828b85794, type: 3}
       propertyPath: m_SortingOrder
       value: 1
@@ -1639,6 +1679,10 @@ PrefabInstance:
     - target: {fileID: -2253911629886400664, guid: 2be0923bdf4c92c40838ec615ea1ab26, type: 3}
       propertyPath: m_Name
       value: MagnetBlueR1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: 2be0923bdf4c92c40838ec615ea1ab26, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: 2be0923bdf4c92c40838ec615ea1ab26, type: 3}
       propertyPath: m_SortingOrder
@@ -1821,6 +1865,10 @@ PrefabInstance:
     - target: {fileID: -2253911629886400664, guid: 97f5a92874c5dc946b7736b2b917b653, type: 3}
       propertyPath: m_Name
       value: MagnetRedR (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: 97f5a92874c5dc946b7736b2b917b653, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: 97f5a92874c5dc946b7736b2b917b653, type: 3}
       propertyPath: m_SortingOrder
@@ -2081,6 +2129,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door (1)
       objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: 18d7bcfb774eb954f86974bf463c5163, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: 18d7bcfb774eb954f86974bf463c5163, type: 3}
       propertyPath: m_SortingOrder
       value: 1
@@ -2211,6 +2263,10 @@ PrefabInstance:
     - target: {fileID: -2253911629886400664, guid: efb46038f218e4d4fa13c16da4a027e0, type: 3}
       propertyPath: m_Name
       value: Magnetfinal (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: efb46038f218e4d4fa13c16da4a027e0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: efb46038f218e4d4fa13c16da4a027e0, type: 3}
       propertyPath: m_SortingOrder
@@ -2343,6 +2399,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floorhalf (1)
       objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: 752050c8e6c3a244dbc79ff828b85794, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 752050c8e6c3a244dbc79ff828b85794, type: 3}
       propertyPath: m_LocalScale.x
       value: 51.70202
@@ -2416,6 +2476,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MagnetRedR1
       objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: bf436aa762903a746976f2ac2e24fb14, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: bf436aa762903a746976f2ac2e24fb14, type: 3}
       propertyPath: m_SortingOrder
       value: 1
@@ -2484,6 +2548,79 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1934853855}
   m_SourcePrefab: {fileID: -8435245712485981826, guid: bf436aa762903a746976f2ac2e24fb14, type: 3}
+--- !u!1001 &838315412
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -2253911629886400664, guid: a3ee1543f15ae38439f4e017b33f550b, type: 3}
+      propertyPath: m_Name
+      value: Background3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878350319992209165, guid: a3ee1543f15ae38439f4e017b33f550b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878350319992209165, guid: a3ee1543f15ae38439f4e017b33f550b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878350319992209165, guid: a3ee1543f15ae38439f4e017b33f550b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878350319992209165, guid: a3ee1543f15ae38439f4e017b33f550b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878350319992209165, guid: a3ee1543f15ae38439f4e017b33f550b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878350319992209165, guid: a3ee1543f15ae38439f4e017b33f550b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878350319992209165, guid: a3ee1543f15ae38439f4e017b33f550b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878350319992209165, guid: a3ee1543f15ae38439f4e017b33f550b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878350319992209165, guid: a3ee1543f15ae38439f4e017b33f550b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878350319992209165, guid: a3ee1543f15ae38439f4e017b33f550b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878350319992209165, guid: a3ee1543f15ae38439f4e017b33f550b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878350319992209165, guid: a3ee1543f15ae38439f4e017b33f550b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878350319992209165, guid: a3ee1543f15ae38439f4e017b33f550b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878350319992209165, guid: a3ee1543f15ae38439f4e017b33f550b, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: -8435245712485981826, guid: a3ee1543f15ae38439f4e017b33f550b, type: 3}
 --- !u!1001 &946287723
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2495,6 +2632,10 @@ PrefabInstance:
     - target: {fileID: -2253911629886400664, guid: bf436aa762903a746976f2ac2e24fb14, type: 3}
       propertyPath: m_Name
       value: MagnetRedR1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: bf436aa762903a746976f2ac2e24fb14, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: bf436aa762903a746976f2ac2e24fb14, type: 3}
       propertyPath: m_SortingOrder
@@ -2627,6 +2768,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floorhalf (3)
       objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: 752050c8e6c3a244dbc79ff828b85794, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: 752050c8e6c3a244dbc79ff828b85794, type: 3}
       propertyPath: m_SortingOrder
       value: 1
@@ -2758,6 +2903,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MagnetBlueR1
       objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: 2be0923bdf4c92c40838ec615ea1ab26, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: 2be0923bdf4c92c40838ec615ea1ab26, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -2847,7 +2996,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &1019939669
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2975,6 +3124,10 @@ PrefabInstance:
     - target: {fileID: -2253911629886400664, guid: 752050c8e6c3a244dbc79ff828b85794, type: 3}
       propertyPath: m_Name
       value: Floorhalf (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: 752050c8e6c3a244dbc79ff828b85794, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: 752050c8e6c3a244dbc79ff828b85794, type: 3}
       propertyPath: m_SortingOrder
@@ -3244,6 +3397,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door
       objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: 18d7bcfb774eb954f86974bf463c5163, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: 18d7bcfb774eb954f86974bf463c5163, type: 3}
       propertyPath: m_SortingOrder
       value: 1
@@ -3454,6 +3611,10 @@ PrefabInstance:
     - target: {fileID: -2253911629886400664, guid: 752050c8e6c3a244dbc79ff828b85794, type: 3}
       propertyPath: m_Name
       value: Floorhalf (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: 752050c8e6c3a244dbc79ff828b85794, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: 752050c8e6c3a244dbc79ff828b85794, type: 3}
       propertyPath: m_SortingOrder
@@ -3673,6 +3834,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floorhalf (4)
       objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: 752050c8e6c3a244dbc79ff828b85794, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: 752050c8e6c3a244dbc79ff828b85794, type: 3}
       propertyPath: m_SortingOrder
       value: 1
@@ -3844,6 +4009,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: tilemap
       objectReference: {fileID: 0}
+    - target: {fileID: 3713369357286571524, guid: 00dc8d743b9b9114eb946d63ce38980e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3934,6 +4103,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floorhalf
       objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: 752050c8e6c3a244dbc79ff828b85794, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: 752050c8e6c3a244dbc79ff828b85794, type: 3}
       propertyPath: m_SortingOrder
       value: 1
@@ -4013,6 +4186,10 @@ PrefabInstance:
     - target: {fileID: -2253911629886400664, guid: 752050c8e6c3a244dbc79ff828b85794, type: 3}
       propertyPath: m_Name
       value: Floorhalf (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: 752050c8e6c3a244dbc79ff828b85794, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: 752050c8e6c3a244dbc79ff828b85794, type: 3}
       propertyPath: m_SortingOrder
@@ -4196,6 +4373,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floorhalf (8)
       objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: 752050c8e6c3a244dbc79ff828b85794, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: 752050c8e6c3a244dbc79ff828b85794, type: 3}
       propertyPath: m_SortingOrder
       value: 1
@@ -4273,6 +4454,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MagnetRedR
       objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: 97f5a92874c5dc946b7736b2b917b653, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 97f5a92874c5dc946b7736b2b917b653, type: 3}
       propertyPath: m_LocalScale.x
       value: 5.5
@@ -4345,6 +4530,10 @@ PrefabInstance:
     - target: {fileID: -2253911629886400664, guid: 752050c8e6c3a244dbc79ff828b85794, type: 3}
       propertyPath: m_Name
       value: Floorhalf (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: 752050c8e6c3a244dbc79ff828b85794, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: 752050c8e6c3a244dbc79ff828b85794, type: 3}
       propertyPath: m_SortingOrder
@@ -4422,6 +4611,10 @@ PrefabInstance:
     - target: {fileID: -2253911629886400664, guid: e4c65af51d175704d8c127d69d97fe4a, type: 3}
       propertyPath: m_Name
       value: Magnetfinal2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: e4c65af51d175704d8c127d69d97fe4a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: e4c65af51d175704d8c127d69d97fe4a, type: 3}
       propertyPath: m_SortingOrder
@@ -4533,9 +4726,9 @@ BoxCollider2D:
   m_Offset: {x: 0.000000014901161, y: 0.08}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.49999997, y: -0.071428575}
-    oldSize: {x: 0.46, y: 0.14}
-    newSize: {x: 0.46, y: 0.14}
+    pivot: {x: 0.49999997, y: -0.06666667}
+    oldSize: {x: 0.46, y: 0.15}
+    newSize: {x: 0.46, y: 0.15}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -4548,6 +4741,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 1140280208}
   - {fileID: 595442938}
+  - {fileID: 838315412}
   - {fileID: 406358541}
   - {fileID: 1650393471}
   - {fileID: 477253975}
