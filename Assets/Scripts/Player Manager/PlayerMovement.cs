@@ -57,11 +57,78 @@ public class PlayerMovement : MonoBehaviour
     public bool chargeState = false;
     public bool playerType;
     public bool hasHeadphones;
+    public bool playerEffectingEachother;
 
     private string platformState;
 
     private LineRenderer lineRenderer;
     public Gradient colorGradient;
+
+    Color GetDesaturatedColor(Color originalColor, float saturation)
+    {
+        Color.RGBToHSV(originalColor, out float h, out float s, out float v);
+        return Color.HSVToRGB(h, saturation, v);
+    }
+
+    Color baseColor;
+    Color newColor;
+
+
+    public void ApplyLineRenderer(GameObject obj)
+    {
+
+        LineRenderer lr = obj.GetComponent<LineRenderer>();
+        if (lr == null)
+        {
+            lr = obj.AddComponent<LineRenderer>();
+        }
+        lr.startColor = Color.red;
+        lr.endColor = Color.blue;
+        lr.startWidth = 0.2f;
+        lr.endWidth = 0.2f;
+
+        lineRenderer = lr;
+    }
+
+    public void ConnectToP2(bool tem)
+    {
+        if (tem)
+        {
+            Color sarrowColor = lineRenderer.startColor;
+            Color earrowColor = lineRenderer.endColor;
+            sarrowColor.a = 0;
+            earrowColor.a = 0;
+            lineRenderer.startColor = sarrowColor;
+            lineRenderer.endColor = earrowColor;
+            playerEffectingEachother = false;
+        }
+        GameObject target = GameObject.FindWithTag("P2");
+        if (target != null && lineRenderer != null)
+        {
+            if (target.GetComponent<PlayerMovement>().chargeState)
+            {
+                playerEffectingEachother = true;
+
+                lineRenderer.SetPosition(0, transform.position);
+                lineRenderer.SetPosition(1, target.transform.position);
+                float distance = Vector3.Distance(transform.position, target.transform.position);
+
+                float t = Mathf.Clamp01(1 - (distance / 10f));
+
+                Color sarrowColor = lineRenderer.startColor;
+                Color earrowColor = lineRenderer.endColor;
+                sarrowColor.a = t - 0.3f;
+                earrowColor.a = t - 0.3f;
+
+                lineRenderer.startColor = sarrowColor;
+                lineRenderer.endColor = earrowColor;
+            }
+        }
+        else
+        {
+            Debug.LogError("P2 not found or LineRenderer is missing!");
+        }
+    }
 
     void Start()
     {
@@ -69,32 +136,39 @@ public class PlayerMovement : MonoBehaviour
 
         if (gameObject.tag == "P1")
         {
+            ApplyLineRenderer(rb.gameObject);
             playerType = true;
-            gameObject.GetComponent<Renderer>().material.color = Color.red;
+            baseColor = Color.red;
             controls = new PlayerControls(KeyCode.W, KeyCode.S, KeyCode.A, KeyCode.D, KeyCode.Space, KeyCode.E);
         }
         else if (gameObject.tag == "P2")
         {
             playerType = false;
-            gameObject.GetComponent<Renderer>().material.color = Color.blue;
+            baseColor = Color.blue;
             controls = new PlayerControls(KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.RightControl, KeyCode.L);
         }
         else
         {
             Debug.LogError("GameObject is connected to an object that is not a player");
         }
+        newColor = GetDesaturatedColor(baseColor, 0.5f);
 
         physicMaterial = rb.sharedMaterial;
         lineRenderer = GetComponent<LineRenderer>();
 
         lineRenderer.positionCount = 2;
         lineRenderer.enabled = false;
-
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Debug.Log("QUIT");
+            Application.Quit();
+        }
+
         if (isGrounded)// 
         {
             coyoteTimeCounter = coyoteTime;
@@ -115,12 +189,31 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(controls.toggle))
         {
             chargeState = !chargeState;
-            if (chargeState)
-            {
-
-            }
             //gameObject.GetComponent<Renderer>().material.saturation *= -1;
         }
+
+        if (!chargeState)
+        {
+            gameObject.GetComponent<Renderer>().material.color = newColor;
+        }
+        else
+        {
+            gameObject.GetComponent<Renderer>().material.color = baseColor;
+        }
+
+        // if (chargeState)
+        // {
+        //     ConnectToP2(false);
+        // }
+        // if (playerType && !chargeState)
+        // {
+        //     ConnectToP2(true);
+        // }
+
+        // if (playerEffectingEachother)
+        // {
+        //     ApplyPlayerForces((gameObject.tag == "P1" ? GameObject.FindWithTag("P2") : GameObject.FindWithTag("P1")));
+        // }
     }
 
     private float CalculateMovement()
@@ -182,7 +275,6 @@ public class PlayerMovement : MonoBehaviour
         {
             isGrounded = false;
         }
-        lineRenderer.enabled = false;
     }
 
     public void OnTriggerStay2D(Collider2D collision)
@@ -191,48 +283,28 @@ public class PlayerMovement : MonoBehaviour
         {
             isGrounded = true;
         }
+
         if (chargeState && collision.gameObject.CompareTag("Magnet"))
         {
-            ApplyPolarityForces(collision);
-            lineRenderer.enabled = true;
-            DrawArrow(collision);
+            ApplyPolarityForces(collision.gameObject);
+            //DrawArrow(collision);
         }
-
-
-
-    }
-    private void ApplyPolarityForces(Collider2D collision)
-    {
-
-        Vector3 worldPos = collision.gameObject.transform.position;
-        int force = collision.gameObject.GetComponent<MagnetScript>().Polarity * (playerType ? 1 : -1);
-        Vector3 direction = (worldPos - transform.position).normalized;
-
-        Debug.Log("DEBUGGING; " + direction);
-
-        rb.AddForce(direction * (force * magnetismPower / (Vector3.Distance(worldPos, transform.position) + 0.4f)));
-
     }
 
-    private void DrawArrow(Collider2D collision)
+    private void ApplyPolarityForces(GameObject collision)
     {
         Vector3 worldPos = collision.transform.position;
-        float distance = Vector3.Distance(transform.position, worldPos);
+        int force = collision.GetComponent<MagnetScript>().Polarity * (playerType ? 1 : -1);
+        Vector3 direction = (worldPos - transform.position).normalized;
 
-        // Normalize distance to range [0,1] for color interpolation
-        float t = Mathf.Clamp01(1 - (distance / 10f)); // 10f is the max distance
-
-        // Set line positions
-        lineRenderer.enabled = true;
-        lineRenderer.SetPosition(0, transform.position);
-        lineRenderer.SetPosition(1, worldPos);
-
-        // Adjust arrow color based on distance
-        Color arrowColor = (playerType ? Color.red : Color.blue);
-        arrowColor.a = t;
-        lineRenderer.startColor = arrowColor;
-        lineRenderer.endColor = arrowColor;
+        rb.AddForce(direction * (force * magnetismPower / (Vector3.Distance(worldPos, transform.position) + 0.4f)));
     }
 
+    private void ApplyPlayerForces(GameObject collision)
+    {
+        Vector3 worldPos = collision.transform.position;
+        Vector3 direction = (worldPos - transform.position).normalized;
 
+        rb.AddForce(direction * (magnetismPower / (Vector3.Distance(worldPos, transform.position) + 0.4f)));
+    }
 }

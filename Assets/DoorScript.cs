@@ -20,54 +20,60 @@ public class DoorScript : MonoBehaviour
             isOpen = true;
         }
     }
-    
-    private bool AreAllButtonsActive()  
+
+    private bool AreAllButtonsActive()
     {
         foreach (ButtonScript button in buttons)
         {
             if (!button.active)
             {
-                return false; 
+                return false;
             }
         }
         return true;
     }
-    
-    private void OnTriggerEnter2D(Collider2D collision)    
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if ((collision.gameObject.CompareTag("P1") || !P1)) {
+        if ((collision.gameObject.CompareTag("P1") || !P1))
+        {
             hasP1 = true;
-        } else if ((collision.gameObject.CompareTag("P2") || !P2)) {
+        }
+        else if ((collision.gameObject.CompareTag("P2") || !P2))
+        {
             hasP2 = true;
         }
 
         CheckDoorCondition(collision);
     }
-    
-    private void OnTriggerExit2D(Collider2D collision)    
+
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if ((collision.gameObject.CompareTag("P1") || !P1)) {
+        if ((collision.gameObject.CompareTag("P1") || !P1))
+        {
             hasP1 = false;
-        } else if ((collision.gameObject.CompareTag("P2") || !P2)) {
+        }
+        else if ((collision.gameObject.CompareTag("P2") || !P2))
+        {
             hasP2 = false;
         }
     }
 
     private void CheckDoorCondition(Collider2D collision)
     {
-        if (hasP1 && hasP2) 
+        if (hasP1 && hasP2)
         {
             ActivateDoor();
         }
     }
 
-    private void ActivateDoor ()
+    private void ActivateDoor()
     {
         NextLevel();
     }
 
-    private void NextLevel ()
+    private void NextLevel()
     {
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

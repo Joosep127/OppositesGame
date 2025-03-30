@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: d984cb4903c0fd547bed072bb7b6df1e
+guid: bd4525fa75132a5449e0dc66ae6ffef8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3220958775474460660
-    second: MagniCatsBG_0
-  - first:
-      213: -6621640660627045045
-    second: MagniCatsBG_1
+      213: 133982719826790466
+    second: Untitled_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +48,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -99,30 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MagniCatsBG_0
+      name: Untitled_0
       rect:
         serializedVersion: 2
-        x: 81
-        y: 29
-        width: 319
-        height: 281
+        x: 0
+        y: 0
+        width: 2166
+        height: 947
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,30 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c08eaaf1f0bdc43d0800000000000000
-      internalID: -3220958775474460660
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MagniCatsBG_1
-      rect:
-        serializedVersion: 2
-        x: 426
-        y: 29
-        width: 319
-        height: 281
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b45ca01f6e43b14a0800000000000000
-      internalID: -6621640660627045045
+      spriteID: 2480155e2900cd100800000000000000
+      internalID: 133982719826790466
       vertices: []
       indices: 
       edges: []
@@ -163,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 33555bbb5fbfb96488ad0f6cca1cf10f
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -172,9 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      MagniCatsBG_0: -3220958775474460660
-      MagniCatsBG_1: -6621640660627045045
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
