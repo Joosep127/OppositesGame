@@ -63,6 +63,10 @@ public class PlayerMovement : MonoBehaviour
     private LineRenderer lineRenderer;
     public Gradient colorGradient;
 
+    //Sound stuff
+    public AudioClip jumpSoundClip;
+    public AudioClip walkSoundClip;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -110,6 +114,8 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             coyoteTimeCounter = 0;
+
+            SFXManager.instance.PlaySound(jumpSoundClip, transform, .5f);
         }
 
         if (Input.GetKeyDown(controls.toggle))
