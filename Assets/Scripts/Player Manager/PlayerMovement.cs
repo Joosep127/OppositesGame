@@ -184,6 +184,8 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             coyoteTimeCounter = 0;
+
+            SFXManager.instance.PlaySound(jumpSoundClip, transform, .5f);
         }
 
         if (Input.GetKeyDown(controls.toggle))
