@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
     public float accelerationAir;
     public float decelerationAir;
 
-
+    Animator animator;
     public float jumpHangTimeThreshold;
     public float jumpHangAccelerationMult;
     public float jumpHangMaxSpeedMult;
@@ -73,6 +73,10 @@ public class PlayerMovement : MonoBehaviour
     Color baseColor;
     Color newColor;
 
+    private SpriteRenderer spriteRenderer;
+
+    public SoundClip jumpSoundClip;
+    //public AudioSource runSoundClip;
 
     public void ApplyLineRenderer(GameObject obj)
     {
@@ -132,7 +136,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         if (gameObject.tag == "P1")
         {
@@ -163,6 +169,18 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        animator.SetFloat("xVelocity", Mathf.Abs(rb.linearVelocity.x));
+
+        if (rb.linearVelocity.x > 0.1f)
+        {
+            spriteRenderer.flipX = false;
+        } // Facing right
+        else if (rb.linearVelocity.x < -0.1f)
+        {
+            spriteRenderer.flipX = true;
+        } // Facing left
+
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Debug.Log("QUIT");
@@ -185,7 +203,7 @@ public class PlayerMovement : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             coyoteTimeCounter = 0;
 
-            //SFXManager.instance.PlaySound(jumpSoundClip, transform, .5f);
+            SFXManager.instance.PlaySound(jumpSoundClip, transform, .5f);
         }
 
         if (Input.GetKeyDown(controls.toggle))
@@ -224,10 +242,12 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(controls.left))
         {
             moveInput = -1;
+            //SFXManager.instance.PlaySound(runSoundClip, transform, .5f);
         }
         else if (Input.GetKey(controls.right))
         {
             moveInput = 1;
+            //SFXManager.instance.PlaySound(runSoundClip, transform, .5f);
         }
         else
         {
@@ -235,7 +255,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         float targetSpeed = moveInput * maxSpeed; // Credit to @DawnosaurDev in youtube
-        //We can reduce are control using Lerp() this smooths changes to are direction and speed
+                                                  //We can reduce are control using Lerp() this smooths changes to are direction and speed
         targetSpeed = Mathf.Lerp(rb.linearVelocity.x, targetSpeed, 1);
 
         float accelRate;
