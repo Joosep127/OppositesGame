@@ -235,8 +235,9 @@ public class PlayerMovement : MonoBehaviour
 
         // Adjust arrow color based on distance
         Color arrowColor = (playerType ? Color.red : Color.blue);
-        arrowColor.a = 1 - t;
+        arrowColor.a = t;
         lineRenderer.startColor = arrowColor;
+        lineRenderer.endColor = arrowColor;
     }
 
 
